@@ -1,0 +1,97 @@
+Vue.js 的核心是一个允许采用简洁的基于 HTML 的模板语法来声明式地将数据渲染进 DOM 的系统
+在底层的实现上，Vue 将模板编译成虚拟 DOM 渲染函数。结合响应性系统，Vue 能够智能地计算出最少需要重新渲染多少组件，并把 DOM 操作次数减到最少。
+
+参考网站:https://v3.cn.vuejs.org/guide/introduction.html
+
+//day01:
+1.Vue的设计思想:
+    数据驱动应用
+    MVVM模式的践行者
+
+2.MVVM框架的三要素: 响应式,模板引擎及其渲染
+    响应式:vue如何监听数据变化?
+    模板:vue的模板如何编写和解析?
+    渲染:vue如何将模板转换为html?
+
+3.插值文本:
+    数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值
+    用 v-once 指令，也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但这会影响到该节点上的其它数据绑定：
+
+4.列表渲染:
+    用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名。
+
+
+5.表单输入绑定:
+    用 v-model 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。它负责监听用户的输入事件来更新数据，并在某种极端场景下进行一些特殊处理。
+
+6.事件处理:
+    用 v-on 指令 (通常缩写为 @ 符号) 来监听 DOM 事件，并在触发事件时执行一些 JavaScript。用法为 v-on:click="methodName" 或使用快捷方式 @click="methodName"
+
+7.Class 与 Style 绑定:
+    操作元素的 class 列表和内联样式是数据绑定的一个常见需求。因为它们都是 attribute，所以可以用 v-bind 处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错。因此，在将 v-bind 用于 class 和 style 时，Vue.js 做了专门的增强。表达式结果的类型除了字符串之外，还可以是对象或数组。
+
+
+//day02:
+8.v-if指令用于条件性渲染一块内容,这块内容只会在指令的表达式返回truthy值的时候被渲染
+
+9.另一个用于条件性展示元素的选项是 v-show 指令,与 v-if 不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS property display
+v-if 是“真正”的条件渲染，因为它会确保在切换过程中，条件块内的事件监听器和子组件适当地被销毁和重建。
+
+v-if 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
+
+相比之下，v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。
+
+一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
+10.v-if 与 v-for (非兼容) 两者作用于同一元素上时,v-if 优先级比 v-for 更高(新版本3.x), [老版本(2.x)v-for更高优先级],由于语法上存在歧义，建议避免在同一元素上同时使用两者。比起在模板层面管理相关逻辑，更好的办法是通过创建计算属性筛选出列表，并以此创建可见元素。
+
+11.在底层的实现上,vue将模板编译成虚拟DOM渲染函数,结合响应系统,vue能够智能的计算出最少需要重新渲染多少组件,并吧DOM操作次数减到最少
+
+
+//day03:
+12:生命周期:指每个vue实例在被创建时都要经历的一系列初始化过程,例如设置数据监听,编译模板,将实例挂载到DOM并在数据变化时更新DOM等
+   三个阶段:初始化:beforeCreate,created,beforeMount,mounted
+            更新:beforeUpdate,updated
+            销毁:beforeDestroy,destroyed
+
+            使用场景:
+            beforeCreate(){}  //执行时组件实例还未创建,通常用于插件开发中执行一些初始化任务
+            created(){}       //组件初始化完毕,各种数据可以使用,常用于异步数据获取
+            beforeMount(){}   //未执行渲染,更新,DOM未创建
+            mounted(){}       //初始化结束,DOM已创建,可用于获取访问数据和DOM元素
+            beforeUpdate(){}  //更新前,可获取更新前各种状态
+            updated(){}       //更新后,所有状态已是最新
+            beforeDestroy(){} //销毁前,可用于一些定时器或订阅的取消(防内存泄露)
+            destroyed(){}     //组件已销毁,作用同上
+
+13:computed与watch比较:
+    语境上:
+    //一个值由其他值得来,这些值改变了我也要跟着改变,适合做多个值影响一个值的情形:
+    comouted:{
+        fullName(){
+            return this.firstName + '' + this.lastName
+        }
+    }
+
+    //一个值变化了,我需要做些事情,适合做一个值影响多个值的情形
+    watch:{
+        firstName(newValue,oldValue){
+            this.fullName = this.firstName + '' + this.lastName
+        },
+        lastName(newValue,oldValue){
+            this.fullName = this.firstName + '' + this.lastName
+        }
+    }
+    计算属性具有缓存性:如果值没有改变,则页面不会重新渲染,对于任何包含响应式数据的复杂逻辑，都应使用计算属性computed
+
+    需要在数据变化时执行异步或开销较大的操作时，应使用监听器watch,默认情况下初始化不执行
+
+    computed性能更好写法简洁
+
+14:在vue实例的生命周期过程中会运行一些生命周期钩子的函数,给用户在不同阶段添加代码的机会,所有的生命周期钩子自动绑定 this 上下文到实例中，因此你可以访问数据，对 property 和方法进行运算。
+   这意味着你不能使用箭头函数来定义一个生命周期方法 (例如 created: () => this.fetchTodos()) 。这是因为箭头函数绑定了父上下文，因此 this 与你期待的组件实例不同，this.fetchTodos 的行为未定义。
+
+15:created表示完成数据观测,属性和方法的运算,初始化事件,$el属性还未出现,DOM不存在
+   DOM渲染在mounted中已完成
+
+16:页面初始化时会触发beforeCreate,created,beforeMount,mounted,更新后才会触发beforeUpdate,updated

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+</head>
+<body>
+    <!--宿主文件-->
+    <div id="app">
+        <!--插值文本-->
+       <h2>{{t}}</h2> 
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        //1:创建vue实例
+        const app = new Vue({
+            el:'#app',
+            data() {
+                return {
+                 t:'hello,vue!'   
+                }
+            },
+        })
+        setInterval(() => {
+            app.t = 'mua~,vue!'
+        }, 1000);
+    </script>
+</body>
+</html>

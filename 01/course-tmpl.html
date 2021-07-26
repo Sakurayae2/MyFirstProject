@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>courses render版</title>
+    <style>
+        .active{
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- 宿主文件 -->
+    <div id="app">
+       
+    </div>
+    
+    <script src="vue.js"></script>
+    <script>
+        // 1:创建vue实例
+        const app = new Vue({
+            el:'#app',
+            data() {
+                return {
+                 title:'Course',
+                 course:'',
+                 selectedCourse:'',
+                 courses:[]
+                }
+            },
+            methods: {
+                addCourse() {
+                    // 1.添加course到数组
+                    this.courses.push(this.course)
+                    // 2.清空数组
+                    this.course = ''
+                }
+            },
+            render(){
+                //限定上下文
+                with(this){
+                    //返回模板函数 (代替#app内内容)
+                    return _c('div',{attrs:{"id":"app"}},[_c('h2',{attrs:{"t":title}},[_v("\n           "+_s(title)+"\n       ")]),_v(" "),_c('p',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(course),expression:"course"}],attrs:{"type":"text"},domProps:{"value":(course)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_k($event.keyCode,"enter",13,$event.key,"Enter"))return null;return addCourse($event)},"input":function($event){if($event.target.composing)return;course=$event.target.value}}}),_v(" "),_c('button',{on:{"click":addCourse}},[_v("新增")])]),_v(" "),(courses.length == 0)?_c('p',[_v("Nothing!")]):_c('div',{staticClass:"course-list"},_l((courses),function(c){return _c('div',{key:c,class:{active: selectedCourse === c},on:{"click":function($event){selectedCourse = c}}},[_v("\n        "+_s(c)+"\n        ")])}),0)])}
+            }
+
+        })
+
+        console.log(app.$options.render); //虚拟Dom的渲染函数
+
+        
+    </script>
+
+</body>
+</html>

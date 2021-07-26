@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>courses</title>
+    <style>
+        .active {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 宿主文件 -->
+    <div id="app">
+        <!-- 插值文本 -->
+        <!-- 数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值 -->
+        <h2 :t="title">
+            {{title}}
+        </h2>
+
+        <!-- 用户输入 -->
+        <p>
+            <!-- 二者皆可实现键盘按下回车触发addCourse函数 -->
+            <input v-model="course" type="text" v-on:keydown.enter="addCourse">
+            <button @click="addCourse">新增</button>
+        </p>
+
+        <!-- 条件渲染 -->
+        <p v-if="courses.length == 0">Nothing!</p>
+
+        <div class="course-list" v-else>
+            <!--也可v-else-if实现更为复杂的场景-->
+            <!-- 列表渲染 -->
+            <div v-for="c in courses" :key="c" :class="{active: selectedCourse === c}" @click="selectedCourse = c">
+                {{ c }}
+            </div>
+        </div>
+        <!-- 课程总数 -->
+        <p>
+            <!-- 表达式 -->
+            <!-- 课程总数:{{courses.length + '门'}} -->
+
+            <!-- 计算属性 -->
+            <!-- 课程总数:{{total}} -->
+
+            <!-- 监听器 -->
+            课程总数:{{totalCount}}
+        </p>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        // 模拟异步数据调用
+        function getCourses() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(['web', 'java'])
+                }, 2000);
+            })
+        }
+
+        // 1:创建vue实例
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    title: 'Course',
+                    course: '',
+                    selectedCourse: '',
+                    courses: [],
+                    totalCount: 0
+                }
+            },
+
+            methods: {
+                addCourse() {
+                    // 1.添加course到数组
+                    this.courses.push(this.course)
+                    // 2.清空数组
+                    this.course = ''
+                }
+            },
+            async created() {
+                // 组件实例已创建,由于未挂载,DOM不存在
+                const courses = await getCourses()
+                this.courses = courses
+            },
+            // mounted(){},
+            computed: {
+                total() {
+                    // 计算属性具有缓存性:如果值没有改变,则页面不会重新渲染
+                    return this.courses.length + '门'
+                }
+            },
+            watch: {
+
+                courses: {
+                    immediate: true, //立即执行一次
+                    // deep: true,
+                    handler(newValue, oldValue) {
+                        this.totalCount = newValue.length + '门'
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

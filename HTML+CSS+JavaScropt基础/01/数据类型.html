@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*基本数据类型:
+          Number:   数字型                默认值:0
+          Boolean:  bool型               默认值:false
+          String:   字符串型             默认值:""
+          Undefined:声明了变量但未赋值   默认值:undefined
+          Null:     声明变量为空        默认值:null
+        */
+
+        // js是动态语言,变量的数据类型可以改变,而且是根据右边的赋值来确定数据类型的
+        var num = 10;
+        num = 'hhh';
+
+        // 获取字符串长度 length
+        var str = 'my name is xxx';
+        console.log(str.length);
+
+        // 字符串拼接
+        console.log('I' + 'love' + 'you'); // I love you
+        console.log('love' + 2); // love2
+        console.log('1' + 2); // 12
+        console.log('I' + true); //Itrue
+
+        var i = 1;
+        console.log('I' + i + '岁');
+
+        var v = undefined;
+        console.log(v + 'love'); // vlove
+
+        // 检测数据类型 typeof
+        var number = 10;
+        console.log(typeof number); //Number
+
+        // 数据类型转换
+        // 转换为字符： .toString(),  String()强制转换,  加号拼接字符串隐式转换
+        var x = 10;
+        console.log(x.toString());
+        console.log(String(x));
+        console.log(x + '');
+
+        // 转换为数字型 parseInt() 取整     parseFloat() 浮点数     Number()强制转换    js隐式转换
+        var y = prompt('请输入您的年龄：');
+        console.log(parseInt(y));
+        console.log(parseInt('120px')); //120 只取第一数字
+        console.log(parseInt('rem120px')); //NaN 不能取，因为首字符不是数字
+
+        console.log(Nubmer('12')); //12
+
+        // 利用算数运算 - * /
+        console.log('12' - 0); //12
+        console.log('123' - '120'); //3
+        console.log('123' * 1); //123
+
+        // 转换为bool型     Boolean()
+        // 代表空，否定的值会被转换为false，如 '',0,NaN,null,undefined, 其余的全转换为true
+        console.log(Boolean(0)); //false
+        console.log(Boolean(1)); //true
+        console.log(Boolean('0')); //true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

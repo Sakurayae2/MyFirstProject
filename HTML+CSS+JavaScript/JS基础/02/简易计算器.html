@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function computer(num) {
+            num1 = Number(prompt('请输入第一个数:'));
+            num2 = Number(prompt('请输入第二个数:'));
+            if (num == 1) {
+                alert(num1 + num2);
+            } else if (num == 2) {
+                alert(num1 - num2);
+            } else if (num == 3) {
+                alert(num1 * num2);
+            } else if (num == 4) {
+                alert(num1 / num2);
+            }
+        }
+
+        while (1) {
+            var operateNum = Number(prompt('欢迎使用简易计算器:\n1:加法运算\n2:减法运算\n3:乘法运算\n4:除法运算\n5:退出\n请输入你的选项:'));
+            if (operateNum == 5) {
+                break;
+            }
+            computer(operateNum);
+        }
+
+
+        //var operateNum;
+        //var num1, num2, sum;
+        // for (var i = 0;; i++) {
+        //     operateNum = Number(prompt('欢迎使用简易计算器:\n1:加法运算\n2:减法运算\n3:乘法运算\n4:除法运算\n5:退出\n请输入你的选项:'));
+        //     if (operateNum == 1) {
+        //         num1 = Number(prompt('请输入第一个数:'));
+        //         num2 = Number(prompt('请输入第二个数:'));
+        //         sum = num1 + num2;
+        //         alert(sum);
+        //         continue;
+        //     }
+        //     if (operateNum == 2) {
+        //         num1 = Number(prompt('请输入第一个数:'));
+        //         num2 = Number(prompt('请输入第二个数:'));
+        //         sum = num1 - num2;
+        //         alert(sum);
+        //         continue;
+        //     }
+        //     if (operateNum == 3) {
+        //         num1 = Number(prompt('请输入第一个数:'));
+        //         num2 = Number(prompt('请输入第二个数:'));
+        //         sum = num1 * num2;
+        //         alert(sum);
+        //         continue;
+        //     }
+        //     if (operateNum == 4) {
+        //         num1 = Number(prompt('请输入第一个数:'));
+        //         num2 = Number(prompt('请输入第二个数:'));
+        //         sum = num1 / num2;
+        //         alert(sum);
+        //         continue;
+        //     }
+        //     if (operateNum == 5) {
+        //         break;
+        //     }
+        // }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

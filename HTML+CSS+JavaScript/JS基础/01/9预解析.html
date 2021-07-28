@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // js代码是由浏览器中js解析器来执行的,过程分两步:预解析,代码执行
+        // 只提升变量,不赋值
+        // 再按作用域链查找最近
+
+        // 重点:
+        // 999 99error
+        f2();
+        console.log(c);
+        console.log(b);
+        console.log(a);
+
+        function f2() {
+            var a = b = c = 9; //var a = 9; b = 9; c = 9; b,c并未声明,为全局变量
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        // 相当于以下操作:
+        function f2() {
+            var a;
+            a = b = c = 9;
+            console.log(a); //9
+            console.log(b); //9
+            console.log(c); //9
+        }
+        f2();
+        console.log(c); //9
+        console.log(b); //9
+        console.log(a); //error
+
+
+        // undefined
+        var num = 10;
+        fun();
+
+        function fun() {
+            console.log(num);
+            var num = 20;
+        }
+        // 相当于以下操作:
+        // var num;
+        // function fun() {
+        //     var num;
+        //     console.log(num);
+        //     num = 20;
+        // }
+        // num = 10;
+        // fun();
+
+
+        // undefined    20;
+        var num1 = 10;
+
+        function fn() {
+            console.log(num1);
+            var num1 = 20;
+            console.log(num1);
+        }
+        fn();
+        // 相当于以下操作:
+        // var num1;
+        // function fn() {
+        //     var num1;
+        //     console.log(num1);
+        //     num1 = 20;
+        //     console.log(num1);
+        // }
+        // num1 = 10;
+        // fn();
+
+        // undefined 9
+        var a = 18;
+        f1();
+
+        function f1() {
+            var b = 9;
+            console.log(a);
+            console.log(b);
+            var a = '123';
+        }
+        // 相当于以下操作:
+        // var a;
+        // function f1() {
+        //     var b;
+        //     var a;
+        //     b = 9;
+        //     console.log(a);
+        //     console.log(b);
+        //     a = '123';
+        // }
+        // a = 18;
+        // f1();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

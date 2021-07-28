@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // javascript作用域: 变量在某个范围起作用和效果,减少命名冲突    全局变量.局部变量
+        // 函数内是局部变量,没声明直接赋值的变量也是全局变量
+        // 全局变量只有在浏览器关闭的时候才会销毁,比较占内存资源,而局部变量用完就会被销毁
+        // 作用域链:内部函数访问外部函数变量采取链式查找方法来决定取哪个值   就近原则   
+        function f1() {
+            var num = 123;
+
+            function f2() {
+                console.log(num);
+            }
+            f2();
+        }
+        var num = 456;
+        f1(); //123
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

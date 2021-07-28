@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function isPrime(num) {
+            if (num < 2) {
+                return false;
+            } else {
+                for (var i = 2; i * i <= num; i++) {
+                    if (num % i == 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        var num = Number(prompt('请输入一个数:'));
+        if (isPrime(num)) {
+            alert('是质数');
+        } else {
+            alert('不是质数');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

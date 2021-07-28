@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.求1~100之间所有数的平均数:
+        var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        alert(sum / 100);
+        // 2.求1~100之间所有偶数和奇数的和:
+        var sum1 = 0,
+            sum2 = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                sum1 += i;
+            } else {
+                sum2 += i;
+            }
+        }
+        alert('偶数和:' + sum1);
+        alert('奇数和:' + sum2);
+        // 3.求1~100之间所有能被3整除的数的和:
+        var sum3 = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                sum3 += i;
+            }
+        }
+        alert(sum3);
+
+        // 打印*个数
+        var str = '';
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= 5; j++) {
+                str += '*';
+            }
+            str += '\n';
+        }
+        console.log(str);
+
+        var str1 = '';
+        for (var i = 1; i <= 10; i++) { //外层循环控制行数
+            for (var j = i; j <= 10; j++) { //内层循环控制每行个数
+                str += '*';
+            }
+            str += '\n';
+        }
+        console.log(str);
+
+        var str2 = '';
+        for (var i = 1; i <= 10; i++) {
+            for (var j = 10 - i + 1; j <= 10; j++) {
+                str2 += '*';
+            }
+            str2 += '\n';
+        }
+        console.log(str2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

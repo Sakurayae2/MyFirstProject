@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 一共九行,每行不一样,所以双for循环
+        // 外层for循环控制行数,打印九行
+        // 内层for循环控制每行个数
+        // 每一行个数正好和行数一致
+        // 每行打印完换行
+        var str = '';
+        for (var i = 1; i <= 9; i++) { // 外循环控制行数
+            for (var j = 1; j <= i; j++) { //内循环控制每行个数
+                str += j + '*' + i + '=' + i * j + '\t';
+            }
+            str += '\n';
+        }
+        console.log(str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

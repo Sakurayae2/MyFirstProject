@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.数组 Array : 一组数据的集合,存储在单个变量下的优雅方式
+        // 2.利用new创建数组
+        var arr = new Array();
+        // 3.利用数组字面量创建数组[]
+        var arr = [1, '2', true];
+        // arr.length 动态监测数组长度
+        console.log(arr.length);
+
+        // 数组最大值
+        var arr = [5, 2, 1, 4, 3];
+        var max = arr[0];
+        for (var i = 1; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+        }
+        console.log(max);
+        // 数组转字符串
+        var arr = ['red', 'blue', 'yellow'];
+        var str = '';
+        var sep = '!';
+        for (var i = 0; i < arr.length; i++) {
+            str += arr[i] + sep;
+        }
+        console.log(str);
+
+        // 筛选数组
+        var arr1 = [5, 1, 3, 2, 100, 7, 99, 200];
+        var newArr = []; //刚开始newArr.length = 0;
+        for (var i = 0; i < arr1.length; i++) {
+            if (arr1[i] > 10) {
+                newArr[newArr.length] = arr1[i];
+            }
+        }
+        console.log(newArr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

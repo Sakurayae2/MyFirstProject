@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 弹出输入框,提示用户输入水果名并保存至变量fruit中
+        // 将这个变量作为switch的表达式
+        // case后面的值写水果名,字符类型,要全等匹配
+        // 弹出不同价格输出框,注意加break;
+        // 默认为没有此水果
+
+        var fruit = prompt('请输入水果名:')
+        switch (fruit) {
+            case '苹果':
+                alert('苹果的价格是3.5元/斤');
+                break;
+            case '榴莲':
+                alert('榴莲的价格是35元/斤');
+                break;
+            default:
+                alert('没有此水果');
+                break;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

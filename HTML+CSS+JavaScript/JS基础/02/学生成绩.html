@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 要求输入班级人数,依次输入学生成绩,最后打印班级总成绩及平均成绩
+        var num = Number(prompt('请输入班级人数:'));
+        var grade, sum = 0;
+        for (var i = 1; i <= num; i++) {
+            grade = Number(prompt('请输入第' + i + '个成绩:'));
+            sum += grade;
+        }
+        alert(sum);
+        alert(sum / num);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

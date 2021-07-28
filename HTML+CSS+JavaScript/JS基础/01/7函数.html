@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.求任意两个数之间的和
+        function getSum(num1, num2) {
+            var sum = 0;
+            for (var i = num1; i <= num2; i++) {
+                sum += i;
+            }
+            console.log(sum);
+        }
+        getSum(1, 100);
+
+        // 2.求任意两个数的最大值
+        function getMax(num1, num2) {
+            return num1 > num2 ? num1 : num2;
+        }
+        console.log(getMax(1, 100));
+
+        // 3.求任意数组内最大元素
+        function getsMax(arr) {
+            var max = arr[0];
+            for (var i = 1; i <= arr.length; i++) {
+                if (max < arr[i]) {
+                    max = arr[i];
+                }
+            }
+            return max;
+        }
+        var result = getsMax([5, 2, 1, 4, 3]); //用变量接受函数返回值
+        console.log(result);
+
+        // 4.返回数组
+        function getResult(num1, num2) {
+            return [num1 + num2, num1 - num2, num1 * num2, num1 / num2];
+        }
+        console.log(getResult(1, 2));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

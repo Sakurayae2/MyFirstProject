@@ -7,3 +7,10 @@ HTML中推荐双引号,JS中推荐单引号
 断点调试:浏览器中按F12->sources->找到需要调试的文件->在某一行设置断点
         watch:监视变量值的变化;
         F11:程序单步执行
+
+// 两个数之间的随机整数包括这俩
+        // Math.floor(Math.random() * (max - min +1 )) + min; 
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log(getRandom(1, 10));

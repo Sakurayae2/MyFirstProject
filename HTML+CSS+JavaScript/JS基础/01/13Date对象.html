@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Data() 日期对象  是一个构造函数,必须用new来调用创建对象实例化
+        var arr = new Array() //创造一个数组对象
+        var obj = new Object() // 创建一个对象实例
+
+        // 1.使用Date   无参数,返回系统当前时间
+        var date = new Date();
+        console.log(date);
+        // 2.参数的写法: 数字型: 2019,10,01 或 '2019-10-1 8:8:8'
+        var date1 = new Date(2019, 10, 1);
+        console.log(date1); //返回的是11月,不是10月
+
+        var date2 = new Date('2019-10-1 8:8:8');
+        console.log(date2); //返回的是10月,推荐使用字符串型
+
+        // 年月日   时分秒
+        var date3 = new Date();
+        var year = date3.getFullYear(); //返回年
+        var month = date3.getMonth() + 1; //返回月份,但是是0~11,少1个月,需要加1
+        var dates = date3.getDate(); //返回日期
+
+        var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        var day = date.getDay(); //返回周几的数字,0~6; 周日是0,周六是6;
+
+        // 封装一个函数返回当前时分秒:
+        function getTime() {
+            var time = new Date();
+            var h = time.getHours();
+            h = h < 10 ? '0' + h : h;
+            var m = time.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = time.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTime());
+
+        console.log('今天是:' + year + '年' + month + '月' + dates + '日 ' + arr[day]);
+
+        // *时间戳*
+        // 获得Date 总的毫秒数 ,距离1970年1月1日至今的总的 ms
+        // 1.通过valueOf() getTime()
+        var date4 = new Date();
+        console.log(date4.valueOf());
+        console.log(date4.getTime());
+        // 2.常用的写法
+        var date5 = +new Date(); // 返回的就是总的毫秒数
+        console.log(date5);
+        // 3.HTML5新增的写法
+        console.log(Date.now());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

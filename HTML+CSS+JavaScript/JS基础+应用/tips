@@ -14,3 +14,14 @@ HTML中推荐双引号,JS中推荐单引号
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
         console.log(getRandom(1, 10));
+
+
+//Web APIs:
+Web API是浏览器提供的一套操作浏览器功能和页面元素的API(BOM和DOM)
+
+DOM:文档对象模型,处理可扩展标记语言(HTML或XML)的标准编程接口,可以改变网页内容,结构,样式
+        文档:一个页面即文档,DOM中用document表示;
+        元素:页面中所有标签即元素,DOM中用element表示;
+        节点:网页中的所有内容都是节点(标签,属性,文本,注释等),DOM中用node表示;
+        DOM把以上内容都看作是对象
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 基本包装类型：把简单的数据类型包装成复杂的数据类型,这样就有了属性和方法了，分三种：String，Number，Boolean
+        var str = 'sakura';
+        console.log(str.length);
+        // 1.将简单数据类型包装为复杂数据类型
+        var temp = new String('sakura');
+        // 2.把临时变量temp的值传递给str
+        str = temp;
+        // 3.销毁temp
+        temp = null;
+
+        // 字符串不可变：指里面的值不可变，虽然赋值结果可以改变，实际改变的是内存中的地址，内存中新开辟的一块空间
+        var str1 = 'sakura';
+        console.log(str1);
+        str1 = 'Yae';
+        console.log(str1);
+
+        // 因为字符串的不可变性，所以不能大量拼接字符串，否则占用太多内存资源
+        // var str2 = '';
+        // for(var i = 1;i<=100000000000000000000000;i++){
+        //     str+=i;
+        // }
+
+        // 根据字符返回位置
+        // 字符串的所有方法都不会修改字符串本身（因为不可变），操作都会返回一个新的字符串
+        // str.indexOf('要查找的元素'，[起始位置]) 指定区间查找
+        var str3 = 'sakuraGin is my lover';
+        console.log(str3.indexOf('i', 8));
+
+        // 根据位置返回字符
+        // charAt(index):返回指定位置的字符，str.charAt(0);
+        console.log(str.charAt(3));
+        for (var i = 0; i < str.length; i++) {
+            console.log(str.charAt(i));
+        }
+        // charCodeAt(index):获取指定位置字符的ASCII码，str.charCodeAt(1); 目的：用来判断用户按了哪个键
+        console.log(str.charCodeAt(0));
+        // str[index]:获取指定位置字符，H5支持，和charAt()等效
+        console.log(str[0]);
+
+        // 字符串操作
+        // concat拼接
+        var str2 = 'andy';
+        console.log(str2.concat('red'));
+
+        // substr('截取的起始位置','截取的个数')
+        var str4 = '改革春风吹满地';
+        console.log(str4.substr(2, 2));
+
+        // 替换字符
+        // replace('被替换的字符','替换的字符') 只会替换第一个字符
+        console.log(str4.replace('改', '1'));
+        // 替换字符串中多个字符(过滤铭感词)
+        var str5 = 'xxooxxooxxooxxoo';
+        while (str5.indexOf('x') !== -1) {
+            str5 = str5.replace('x', '*');
+        }
+        console.log(str5);
+
+        // 字符串转换为数组 split('分隔符')
+        var str6 = 'red,pink,blue';
+        console.log(str6.split(','));
+
+        // toUpperCase() 转换大写
+        // toLowerCase() 转换小写
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

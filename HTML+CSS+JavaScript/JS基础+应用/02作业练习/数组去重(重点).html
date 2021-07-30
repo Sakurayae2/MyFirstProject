@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 目标:将旧数组里不重复的元素取出来放入新数组中,重复的只保留一个;
+        // 核心算法:遍历旧数组,拿旧数组元素去新数组查询,若该元素没在新数组,就添加进去,否则不添加
+        // 用indexOf(数组元素)来判断,若返回-1则表明新数组里没有该元素,就添加进去
+        // 封装一个去重函数 unique 独一无二的
+        function unique(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) == -1) { //新数组里没有此元素
+                    newArr.push(arr[i]); //将此元素添加进新数组
+                }
+            }
+            return newArr;
+        }
+        var demo = unique(['I', 'love', 'You', 'I', 'You']);
+        console.log(demo);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

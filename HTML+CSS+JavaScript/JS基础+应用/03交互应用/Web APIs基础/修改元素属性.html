@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='M'>Miku</button>
+    <button id='S'>Sakurajima</button> <br>
+    <img src="images/1.png" alt="">
+
+    <script>
+        // 修改元素属性 src
+        // 1.获取元素
+        var M = document.getElementById('M');
+        var S = document.getElementById('S');
+        var img = document.querySelector('img');
+        // 2.注册事件   添加处理程序
+        S.onclick = function () {
+            img.src = 'images/6.png';
+            img.title = 'MyWife';
+        }
+        M.onclick = function () {
+            img.src = 'images/1.png';
+        }
+    </script>
+</body>
+
+</html>

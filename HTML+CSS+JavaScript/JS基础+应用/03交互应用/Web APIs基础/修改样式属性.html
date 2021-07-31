@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        /* 
+        通过js修改元素的大小颜色位置等
+        element.style   行内样式操作
+        element.className 类名样式操作
+        js里的样式采用[驼峰命名法],比如fontSize,backgroundColor
+        js修改style样式操作,产生的是行内样式,css权重比较高 以js为准
+        */
+        var div = document.querySelector('div'); //获取div元素
+        div.onclick = function () { //注册事件 添加程序
+            this.style.backgroundColor = 'purple'; //修改背景颜色
+            this.style.width = '250px'; //修改宽度
+        }
+    </script>
+</body>
+
+</html>

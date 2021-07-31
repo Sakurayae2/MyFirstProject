@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .box input {
+            width: 370px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+
+        .box img {
+            position: absolute;
+            top: -20px;
+            right: 10px;
+            width: 85px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="">
+            <img src="images/1.png" alt="" id='eye'>
+        </label>
+        <input type="password" name="" id="pwd">
+    </div>
+
+    <script>
+        /* 
+        点击图片按钮,将密码框类型修改为文本框就能看见里面的内容;
+        一个按钮两个状态,点击一次,切换为文本框,继续点击切换回密码框;
+        算法:利用flag变量,来判断flag的值,如果是1就切换为文本框,flag设置为0,如果是0就切换为密码框,flag设置为1
+        */
+
+        // 1.获取元素
+        var eye = document.getElementById('eye');
+        var pwd = document.getElementById('pwd');
+        // 2.注册事件 添加程序
+        var flag = 0;
+        eye.onclick = function () {
+            if (flag == 0) {
+                pwd.type = 'text';
+                eye.src = 'images/2.png';
+                flag = 1;
+            } else {
+                pwd.type = 'password';
+                eye.src = 'images/1.png';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

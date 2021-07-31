@@ -9,8 +9,21 @@
 </head>
 
 <body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
     <script>
         // 利用DOM可以操作表单属性  type value checked  selected  disabled
+
+        // 1.获取元素
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        // 2.注册事件 添加处理程序
+        btn.onclick = function () {
+            input.value = '被点击了'; //表单里的值 文字内容是通过value来修改的
+            //  如果想要禁用某个表单,不能再被点击,想要禁用这个按钮
+            // btn.disabled = true; //禁用button
+            this.disabled = true; //this指向的是事件函数的调用者 btn
+        }
     </script>
 </body>
 

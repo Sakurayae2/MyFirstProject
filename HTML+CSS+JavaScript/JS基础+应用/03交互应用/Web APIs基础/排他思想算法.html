@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        /* 
+        排他思想:如果有同一组元素,想要某一个元素实现某种样式,需要用到循环的排他思想算法:
+        1:所有元素清楚样式(干掉其他人)
+        2:给当前元素设置样式(留下我自己)
+        3:注意顺序
+        */
+
+
+        // 1.获取所有按钮元素
+        var btns = document.getElementsByTagName('button');
+        // btns得到的是伪数组 ,遍历btns[i]
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                // 先把所有按钮背景颜色去掉
+                for (var j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = '';
+                }
+                // 再把当前元素背景颜色改为pink
+                this.style.backgroundColor = 'pink';
+            }
+        }
+    </script>
+</body>
+
+</html>

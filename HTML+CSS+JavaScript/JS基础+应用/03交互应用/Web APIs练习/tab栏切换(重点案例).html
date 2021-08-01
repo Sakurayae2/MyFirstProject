@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装内容
+            </div>
+            <div class="item">
+                售后保障内容
+            </div>
+            <div class="item">
+                商品评价内容
+            </div>
+            <div class="item">
+                手机社区内容
+            </div>
+        </div>
+    </div>
+    <script>
+        /* 
+        tab栏切换有两大模块，
+        上面的模块选项卡，点击某一个，当前这一个底色会是红色，其余不变（排他思想）修改类名的方式
+        下面的模块内容，会跟随上面的选项卡变化，所以下面模块变化写到点击事件里，下面显示的内容与上面的选项卡一一对应相匹配
+        核心思路：给上面的tab——list里所有的li添加一个自定义属性，属性值从0开始编号
+                 当我们点击时tab——list里的li时，让tab——con里面对应序列号的内容显示，其余隐藏
+        */
+
+        // 1.获取元素
+        var tab_list = document.querySelector('.tab_list');
+        var lis = tab_list.querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+        // 2.for循环绑定点击事件
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i); //给li设置索引号
+            lis[i].onclick = function () {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = ''; //清除其他class类
+                }
+                this.className = 'current'; //保留自己的类
+
+                var index = this.getAttribute('index'); //index是li的索引号
+                console.log(index);
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

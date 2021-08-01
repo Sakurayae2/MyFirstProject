@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo" index="1" class="233">
+
+    </div>
+    <script>
+        // 1.获取元素的属性值
+        var div = document.querySelector('div'); //element.属性  获取的是内置属性值（元素本身自带的属性）
+        console.log(div.getAttribute('id')); //element.getAttribute('属性') 主要获取的是自定义的属性（标准）程序员自定义的属性
+        console.log(div.getAttribute('index')); //得到自定义属性index的值
+
+        // 2.设置元素属性值
+        div.id = 'test'; //element.属性 = ‘值’ 设置内置属性
+        div.className = 'hhh';
+        div.setAttribute('index', 2); //element.setAttribute('属性',值) 主要针对自定义属性
+        div.setAttribute('class', 'footer'); //class比较特殊，因为是关键字
+
+        // 3.移除元素属性 removeAttribute(属性)
+        div.removeAttribute('index');
+    </script>
+</body>
+
+</html>

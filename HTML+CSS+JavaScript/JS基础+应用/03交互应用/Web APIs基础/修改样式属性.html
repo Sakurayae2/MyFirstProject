@@ -12,24 +12,37 @@
             height: 200px;
             background-color: pink;
         }
+
+        .change {
+            background-color: purple;
+            color: #fff;
+            font-size: 25px;
+            margin-top: 100px;
+        }
     </style>
 </head>
 
 <body>
-    <div></div>
+    <div class="change">文本</div>
 
     <script>
         /* 
         通过js修改元素的大小颜色位置等
-        element.style   行内样式操作
-        element.className 类名样式操作
+        element.style   行内样式操作    样式较少,功能简单适用
+        element.className 类名样式操作  样式较多,功能复杂适用
         js里的样式采用[驼峰命名法],比如fontSize,backgroundColor
         js修改style样式操作,产生的是行内样式,css权重比较高 以js为准
         */
         var div = document.querySelector('div'); //获取div元素
         div.onclick = function () { //注册事件 添加程序
-            this.style.backgroundColor = 'purple'; //修改背景颜色
-            this.style.width = '250px'; //修改宽度
+            // 通过行内样式操作style
+            // this.style.backgroundColor = 'purple'; //修改背景颜色
+            // this.style.width = '250px'; //修改宽度
+
+            // 通过类名样式操作className
+            this.className = 'change'; //让当前元素的类名改为change,会覆盖之前的类名
+            // 如果要保留之前的类名
+            this.className = 'first change';
         }
     </script>
 </body>

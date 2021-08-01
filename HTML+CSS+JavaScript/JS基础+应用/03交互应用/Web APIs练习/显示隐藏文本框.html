@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="手机">
+    <script>
+        /* 
+        1.首先表单需要两个事件,获得焦点onfocus和失去焦点onblur;
+        2.如果获得焦点,判断表单里面内容是否为默认文字,是就清空表单内容;
+        3.如果失去焦点,判断表单内容是否为空,是就将表单内容改为默认文字
+        */
+
+        // 1.获取元素
+        var text = document.querySelector('input');
+        // 2.注册事件 获得焦点onfocus事件
+        text.onfocus = function () {
+            if (this.value === '手机') {
+                this.value = '';
+            }
+            // 获得焦点需要把文本框文字颜色变黑
+            this.style.color = '#333';
+        }
+        // 失去焦点onblur事件
+        text.onblur = function () {
+            if (text.value === '') {
+                this.value = '手机';
+            }
+            // 失去焦点需要把文本变浅
+            this.style.color = '#999';
+        }
+    </script>
+</body>
+
+</html>

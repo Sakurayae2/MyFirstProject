@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <button>删除</button>
+    <ol>
+        <li>我是ol1</li>
+        <li>我是ol2</li>
+        <li>我是ol3</li>
+        <li>我是ol4</li>
+    </ol>
+    <div class="box">
+        <span class="erweima">X</span>
+    </div>
+    <script>
+        /* 
+        获取元素通常两种方法:
+        1.利用DOM提供的方法获取:如document.getElementById(),document.getElementByTagName(),document.querySelector()等
+          此种方法逻辑性不强,操作繁琐
+
+        2.利用节点层级关系获取元素:利用父子兄节点关系获取元素,逻辑性强,操作更简单,但兼容性稍差
+
+        节点概述:
+            网页中所有的内容都是节点(标签,属性,文本,注释等),在DOM中,节点用node表示;
+            HTML DOM树中的所有节点都可通过js进行访问,所有HTML元素(节点)都可以被修改,也可以创建和删除
+            
+            利用DOM树可以把节点划分为不同层级关系,常见的是父子兄层级关系
+                                        文 档
+                                          |
+                                        根元素:<html>
+                                          |
+                        -----------------------------------------
+                        |                                       |
+                    元素:<head>                             元素:<body>
+                        |                                       |
+                    元素:<title>       [属性:href]---元素:<a>---------元素:<h1>
+                        |                              |                |
+                    文本:"文档标题"                 文本:"我的链接"   文本:"我的标题"  
+
+            一般地,节点至少拥有nodeType(节点类型),nodeName(节点名称),nodeValue(节点值)这三个基本属性
+                    元素节点nodeType为1;
+                    属性节点nodeType为2;
+                    文本节点nodeType为3(文本节点包含文字,空格,换行等);
+            实际开发中,节点操作主要是针对元素节点
+
+         */
+
+
+        // 1.父节点:parentNode
+        var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box') //DOM操作获取元素
+        console.log(erweima.parentNode); //利用父节点获取元素,得到的是离元素最近的父级节点,找不到返回null
+
+        // 2.1子节点:childNodes(标准) 一般不提倡childNodes 返回所有的子节点 包含元素节点 文本节点等
+        var ul = document.querySelector('ul');
+        console.log(ul.childNodes);
+        // 只获取元素节点需要专门处理
+        for (var i = 0; i < ul.childNodes.length; i++) {
+            if (ul.childNodes[i].nodeType == 1) {
+                console.log(ul.childNodes[i]); //返回元素节点
+            }
+        }
+        // 2.2子节点:children(非标准) 实际开发常用  parentNode.children是一个只读属性,只返回所有的子元素节点
+        console.log(ul.children);
+        // 获取第一个和最后一个子元素
+        var ol = document.querySelector('ol');
+        // firstChild,  lastChild 第一个子节点, 最后一个子节点 不管是元素节点还是文本节点
+        console.log(ol.firstChild);
+        console.log(ol.lastChild);
+        // firstElementChild,lastElementChild  第一个子元素节点,最后一个子元素节点,兼容性仅支持IE9以上
+
+        // 实际开发的写法,既没有兼容性问题又能返回第一个子元素
+        console.log(ol.children[0]);
+        console.log(ol.children[ol.children.length - 1]);
+
+        // 3.1兄节点   nextSibling,  previousSibling  得到的是下一个兄节点,  上一个兄节点,包含元素节点或者文本节点
+        var div = document.querySelector('div');
+        console.log(div.nextSibling);
+        // 3.2兄节点  node.nextElementSibling(previousElementSibling)  返回下一个(上一个)兄元素节点,找不到返回null ,兼容性IE9以上
+        console.log(div.nextElementSibling);
+        // 可以封装一个兼容性的函数解决兼容性
+        function getNextElementSibling(element) {
+            var el = element;
+            while (el = el.nextSibling) {
+                if (el.nodeType == 1) {
+                    return el;
+                }
+            }
+            return null;
+        }
+
+
+        // 节点操作:
+        // 创建节点 document.createElement('tagName')创建由tagName指定的HTML元素,因为这些元素原先不存在,是根据需求动态生成的,所以称为动态创建元素节点
+        // 添加节点node.appendChild(child) 将一个节点添加到指定父节点的子节点列表末尾(类似数组push),类似于css里的after伪元素  node父级,child子级
+        //node.insertBefore(child,指定元素),将节点添加到父节点的指定子节点前面，类似css中的before伪元素
+        var li = document.createElement('li'); //创建元素节点
+        var ul = document.querySelector('ul'); //获取父元素
+        ul.appendChild(li); //添加元素节点到ul的子节点的后面
+        ul.insertBefore(li, ul.children[0]); //添加元素节点到ul的子节点的前面
+
+        // 删除节点：node.removeChild(child),从DOM中删除一个子节点，返回删除的节点
+        var ol = document.querySelector('ol');
+        var btn = document.querySelector('button');
+        ol.removeChild(ol.children[0]);
+        // 点击按钮依次删除
+        btn.onclick = function () {
+            if (ul.children.length == 0) {
+                this.disabled = true;
+            } else {
+                ol.removeChild(ol.children[0]);
+            }
+        }
+
+        // 复制节点（克隆节点） node.cloneNode() 返回调用该方法的节点的一个副本，也称克隆或拷贝节点
+        //                     括号内参数为空或false，则是浅拷贝，只克隆节点本身，不克隆里面的子节点
+        //                      括号内参数为true，则是深拷贝，完全拷贝节点本身及其子节点
+        var olol = ol.children[0].cloneNode(true);
+        ol.appendChild(olol);
+
+
+        // 三种动态创建元素的方法 document.write():直接将内容写入页面的内容流，但是文档执行完毕后，会导致页面全部重绘
+        //                      element.createElement()：创建多个元素时效率稍低一点，但结构清晰
+        //                      element.innerHTML：将内容写入某个DOM节点，不会导致页面重绘，创建多个元素时效率更高（前提是采用数组形式拼接而不是字符串拼接），结构稍复杂
+    </script>
+</body>
+
+</html>

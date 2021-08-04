@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击停止定时器</button>
+    <button class="btn1">111</button>
+    <script>
+        /* 
+        window对象提供了两种定时器:
+        setTimeout() : window.setTimeout(调用函数,[延迟的毫秒数]);用于设定一个定时器,该定时器在定时器到期后执行调用函数
+                        这个window可以省略,延迟单位是毫秒,可以省略,如果省略默认是0
+                        这个调用函数可以直接写函数,也可以写函数名 也可以写 '函数名()'不过不提倡后者写法
+                        页面中可能有很多定时器,所以经常加标识符区分
+                        setTimeout这个调用函数也被称为回调函数 callback   //element.onclick = function(){}或者element.addEventListener()也是回调函数
+                        延迟时间到了就去调用这个回调函数,只调用一次就结束了这个定时器
+                        停止定时器:clearTimeout(timeoutID),取消之前的定时器
+
+
+
+        setInterval() :window.setInterval(回调函数,[间隔的毫秒数]); 重复调用一个函数,每隔这个时间,就去调用一次回调函数
+                        其他类似,只是执行方式不同,会根据时间间隔重复执行多次回调函数
+                        停止定时器:clearInterval(intervalID),取消之前的定时器
+        */
+
+        // setTimeout():
+        setTimeout(() => {
+            console.log('timeout');
+        }, 2000);
+
+        function callback() {
+            console.log('Boom');
+        }
+        var timer1 = setTimeout(callback, 3000); //设置定时器名为timer1
+
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            clearTimeout(timer1); //点击按钮清除定时器
+        })
+
+
+        // setInterval():
+        setInterval(function () {
+            console.log('233');
+        }, 1000)
+
+        var timer = setInterval(function () {
+            console.log('233');
+        }, 1000)
+        var btn1 = document.querySelector('.btn1');
+        btn1.addEventListener('click', function () {
+            clearInterval(timer);
+        })
+    </script>
+</body>
+
+</html>

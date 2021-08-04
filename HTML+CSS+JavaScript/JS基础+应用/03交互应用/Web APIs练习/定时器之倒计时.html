@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        /* 
+        计时器是不停变化的,需要用定时器setInterval()
+        三个黑色盒子里面分别存放时分秒,利用innerHTML放入计算的小时分钟秒数
+        第一次执行也是间隔毫秒数,因此刚刷新页面会有空白
+        最好采用封装函数的方式,这样可以先调用一次这个函数,防止刚刷新有空白的问题
+        */
+
+        // 1.获取元素
+        var hour = document.querySelector('.hour'); //小时的黑色盒子
+        var minute = document.querySelector('.minute'); //分钟的黑色盒子
+        var second = document.querySelector('.second'); //秒数的黑色盒子
+        var inputTime = +new Date('2021-8-5 19:34:00'); //用户输入的时间
+        countDown(); //先调用一次倒计时函数,防止页面刚刷新有空白的问题
+
+        // 2.开启定时器
+        setInterval(countDown, 1000);
+
+        function countDown() {
+            var nowTime = +new Date();
+            var times = (inputTime - nowTime) / 1000;
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h; //把剩余的小时数赋值给小时黑色盒子
+            var m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m;
+            var s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s;
+        }
+    </script>
+</body>
+
+</html>

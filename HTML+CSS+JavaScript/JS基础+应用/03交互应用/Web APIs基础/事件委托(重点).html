@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+    </ul>
+    <script>
+        /* 
+        事件冒泡本身的特性,会带来好处也会有坏处,需要灵活使用,比如送100个快递:
+        一个个送费时间,一个个领也费时间,但把快递委托给快递站,自己有时间去领即可,双方都方便
+        访问DOM的次数越多,就会延长整个页面的交互就绪时间
+        */
+
+        /* 
+        事件委托也称为事件代理,jQuery里叫事件委派
+        原理:不是每个子节点单独设置事件监听器,而是将事件监听器设置在其父节点上,然后利用冒泡原理影响设置每个子节点
+        作用:只操作一次DOM,提高了程序的性能
+        */
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function (e) {
+            alert('知否知否');
+            // e.taget 可以得到点击的对象
+            e.target.style.backgroundColor = 'pink';
+        })
+    </script>
+</body>
+
+</html>

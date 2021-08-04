@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    我是一段不让分享的文字
+    <script>
+        // 禁止鼠标右键菜单:contextmenu主要控制应该何时显示上下文菜单,主要用于程序员取消默认的上下文菜单
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        })
+        // 禁止鼠标选中(selectstart开始选中)
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        })
+
+        // 鼠标事件对象 MouseEvent
+        document.addEventListener('click', function (e) {
+            console.log(e.clientX); //鼠标距可视区左边的x坐标
+            console.log(e.clientY); //鼠标距可视区上边的y坐标
+            console.log(e.pageX); //鼠标相对于文档页面的x坐标 ie9+支持
+            console.log(e.screenX); //鼠标相对于电脑屏幕的x坐标
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册</button>
+    <button>方法监听注册</button>
+    <button>ie9 attachEvent</button>
+    <script>
+        /* 
+        给元素添加事件称为注册事件或绑定事件,有两种方式,传统方式和方法监听注册方式
+        传统方式:利用on开头的事件如onclick,注册事件的唯一性,同一元素同一事件只能设置一个处理函数,后面会覆盖前面的
+        方法监听注册方式:w3c标准推荐方式,addEventListener()他是一个方法,ie9以前不支持,需用attachEvent()代替,此方法同一个元素同一事件可以注册多个监听器,按顺序依次执行
+                        eventTarget.addEventListener(type,listener[,useCapture]),将指定的监听器注册到目标对象上,当该对象触发指定事件时,执行处理函数,
+                                                    type:事件类型字符串,比如click,mouseover,注意不要加on和传统方式分开
+                                                    listener:事件处理函数,事件发生时,会调用该监听函数
+                                                    useCapture:可选参数,是一个布尔值,默认是false
+         */
+
+        var btns = document.querySelectorAll('button');
+        // 1.传统方式注册事件
+        btns[0].onclick = function () {
+            alert('hi');
+        }
+        btns[0].onclick = function () {
+            alert('hello'); //会覆盖之前的函数
+        }
+        // 2.1方法监听注册事件 addEventListener(ie9以上)
+        // 同一对象同一事件可以注册多个监听器(事件处理程序)
+        btns[1].addEventListener('click', function () { //注意是字符串,不带on
+            alert('22');
+        })
+        btns[1].addEventListener('click', function () { //注意是字符串,不带on
+            alert('33');
+        })
+        // 2.2方法监听注册事件 attachEvent(兼容ie)
+        // 参数一:eventNameWithOn:事件类型字符串,比如onclik
+        // 参数二:callback:事件处理函数
+        btns[2].attachEvent('onclick', function () {
+            alert('11'); //ie9以前才支持
+        })
+
+        // 兼容性解决方案,原则:先照顾大多数浏览器,在考虑特殊浏览器
+        function addEventListener(element, eventName, fn) {
+            // 判断当前浏览器是否支持addEventListener方法
+            if (element.addEventListener) {
+                element.addEventListener(eventName, fn); //第三个参数,默认false
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, fn);
+            } else {
+                // 相当于element.onclick = fn;
+                element['on' + eventName] = fn;
+            }
+        }
+    </script>
+</body>
+
+</html>

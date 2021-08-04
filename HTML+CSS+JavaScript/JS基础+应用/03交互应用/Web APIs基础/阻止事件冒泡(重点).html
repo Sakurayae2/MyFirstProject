@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            border: 100px solid blue;
+        }
+
+        .son {
+            border: 100px solid pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son</div>
+    </div>
+    <script>
+        /* 
+        阻止事件冒泡
+        标准写法:利用事件对象里的stopPropagation()方法
+        非标准写法:ie678 利用事件对象  cancelBubble属性
+        */
+        var son = document.querySelector('.son');
+        son.addEventListener('click', function (e) {
+            alert('son');
+            e.stopPropagation();
+            e.cancelBubble = true;
+            // 兼容性写法:
+            if (e && e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                window.event.cancelBubble = true;
+            }
+        }, false);
+
+        var father = document.querySelector('.father');
+        father.addEventListener('click', function () {
+            alert('father');
+        }, false);
+        document.addEventListener('click', function () {
+            aler('document');
+        });
+    </script>
+</body>
+
+</html>

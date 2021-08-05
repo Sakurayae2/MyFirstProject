@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            display: none;
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            background-color: #ffffff;
+        }
+
+        .form {
+            line-height: 50px;
+        }
+
+        .close {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            line-height: 60px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .logbg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .title {
+            height: 50px;
+            line-height: 50px;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="open">点击，弹出登录框</button>
+    <div class="box">
+        <div style="position: relative">
+            <div class="title">登录会员</div>
+            <div class="form">
+                用户名<input typeof="text">
+            </div>
+            <div class="form">
+                登录密码<input typeof="text">
+            </div>
+            <button>登录会员</button>
+            <a href="javascript:;" class="close">关闭</a>
+        </div>
+    </div>
+    <div class="logbg"></div>
+    <script>
+        /* 
+        点击弹出层,模态框和遮挡层就会显示出来display:block;
+        点击关闭按钮,模态框和遮挡层就会隐藏起来display:none;
+        在页面中拖拽的原理:鼠标按下并且移动,之后松开鼠标
+        触发事件是鼠标按下mousedown,鼠标移动mousemove,鼠标松开mouseup
+        拖拽过程:鼠标移动过程中,获得最新的值赋值给模态框的left和top,这样就看起来是模态框跟着鼠标走
+        鼠标按下触发的事件源是最上面一行,id为title
+        鼠标的坐标减去鼠标在盒子中的坐标才是模态框的位置
+        鼠标按下,得到鼠标在盒子里的坐标
+        鼠标移动,就让模态框的坐标设置为:鼠标坐标减去盒子坐标即可,注意移动事件写在按下事件里面
+        鼠标松开,就停止拖拽,解除鼠标移动事件
+        */
+        var box = document.querySelector('.box');
+        var title = document.querySelector('.title');
+        var open = document.querySelector('.open');
+        var close = document.querySelector('.close')
+        var logbg = document.querySelector('.logbg');
+        open.addEventListener('click', function () {
+            box.style.display = 'block';
+            logbg.style.display = 'block';
+        })
+        close.addEventListener('click', function () {
+            box.style.display = 'none';
+            logbg.style.display = 'none';
+        })
+        title.addEventListener('mousedown', function (e) {
+            console.log(e)
+            var left = e.pageX - box.offsetLeft;
+            var top = e.pageY - box.offsetTop;
+
+            function move(e) {
+                box.style.left = e.pageX - left + 'px';
+                box.style.top = e.pageY - top + 'px';
+            }
+
+            document.addEventListener('mousemove', move);
+            document.addEventListener('mouseup', function (e) {
+                document.removeEventListener('mousemove', move)
+            })
+        })
+    </script>
+</body>
+
+</html>

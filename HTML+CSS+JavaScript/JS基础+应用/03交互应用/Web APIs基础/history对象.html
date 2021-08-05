@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="index.html">点击去往首页</a>
+    <button>后退</button>
+    <script>
+        /* 
+        history对象与浏览器历史记录交互,该对象包含用户(在浏览器窗口)访问过的url
+        history.back(): 实现后退功能
+        history.forward() : 实现前进功能
+        history.go(参数) : 前进后退功能,参数是1前进一个页面,参数为-1就后退一个页面
+        */
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            history.back(); //回退
+            // history.go(-1);回退
+        })
+    </script>
+</body>
+
+</html>

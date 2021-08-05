@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn500">点击33到500</button>
+    <button class="btn800">点击33到800</button>
+    <div>22</div>
+    <span>33</span>
+    <script>
+        /* 
+        缓动动画就是让元素的运动速度有所变化,最常见的是越来越慢停下来
+        思路:
+        1.让每次移动的距离慢慢变小,速度就会慢下来
+        2.核心算法:  缓动动画公式: (目标值 - 现在的位置) / 10 作为每次移动的距离步长
+        3. 停止条件:让当前盒子位置等于目标位置就停止定时器
+        4.注意步长值需要取整
+        */
+        // 匀速动画就是 盒子当前位置 + 固定的值  10
+        // 缓动动画就是 盒子当前位置 + 变化的值 ((目标位置-现在位置) / 10)
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 步长值写进定时器里
+                // 把步长值改为整数,不要小数,避免出现问题,还要考虑正负
+                // var step = Math.ceil((target - obj.offsetLeft) / 10);
+                var step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    // 回调函数写到定时器结束时
+                    if (callback) {
+                        callback();
+                    }
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15);
+        }
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        animate(div, 300);
+        var btn500 = document.querySelector('.btn500');
+        var btn800 = document.querySelector('.btn800');
+        btn500.addEventListener('click', function () {
+            animate(span, 500);
+        })
+        btn800.addEventListener('click', function () {
+            animate(span, 800, function () {
+                span.style.backgroundColor = 'red';
+            });
+        })
+
+        // 添加回调函数
+        // 回调函数原理:函数作为一个参数,将这个函数作为参数传到另一个函数里,当那个函数执行完之后,再执行传进去的这个函数,这个过程称为回调;
+        // 回调函数写到定时器结束的位置
+
+        // 如果以后经常用这个动画函数，可以单独封装到一个js文件中，使用时引用即可
+        // 1、单独新建一个js文件
+        // 2、需要就引用
+    </script>
+</body>
+
+</html>

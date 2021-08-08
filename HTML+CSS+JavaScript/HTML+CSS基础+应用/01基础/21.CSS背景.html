@@ -6,17 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            /* background-image: url(../02练习/images/0.jpg);
+            background-repeat: no-repeat;
+            background-position: center top; */
+            background: pink url(../02练习/images/0.jpg) no-repeat fixed center top;
+        }
+
+        h3 {
+            width: 118px;
+            height: 40px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 40px;
+            background-image: url();
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-attachment: fixed;
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 0, 0, .3);
+        }
+    </style>
 </head>
 <!-- 
     背景属性可以设置背景颜色，背景图片，背景平铺，背景图片位置，背景图像固定等
     background-color：pink    背景颜色 默认是transparent（透明的）
     background-image：url()   背景图片  便于控制位置（如精灵图）
     background-repeat:repeat    背景平铺，默认也是平铺 no-repeat 不平铺  repeat-x横向平铺 repeat-y纵向平铺 背景图片会压住背景颜色
-    
+    background-position: x,y;   x,y可以使用方位名词或者精确单位,如果是方位,顺序无所谓,只有一个方位,另一个默认居中对齐
+    background-attachment:scroll / fixed  属性设置背景图像是否固定或者随页面的其余部分滚动,用于制作视差滚动
+    复合写法:背景颜色,背景图像地址,背景平铺,背景图像滚动,背景图片位置
+
+    CSS3背景半透明: background:rgba(0,0,0,0.3);最后一个参数是alpha透明度,0~1之间取值,可以省略0,写 .3  ,盒子背景半透明,盒子里的内容不受影响
 -->
 
 <body>
-
+    <h3>成长守护平台</h3>
+    <div></div>
 </body>
 
 </html>

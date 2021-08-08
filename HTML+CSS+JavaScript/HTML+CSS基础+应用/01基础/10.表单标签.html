@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    表单<form>标签是为了收集和传递用户信息,会把范围内的表单元素信息提交给服务器,通常由表单域,表单控件(也称表单元素)和提示信息三部分构成
+    <form action="url地址" method="提交方式" name="表单域名称">
+        各种表单元素控件
+    </form>
+    action: url地址     用于接收并处理表单数据的服务器的url地址
+    method: get/post    用于设置表单数据的提交方式,get/post
+    name:   名字        用于指定表单的名称,以区分同一页面不同表单
+
+    表单控件(表单元素):
+    在表单域中可以定义各种表单元素,允许用户在表单中输入或选择的内容控件
+    input输入表单元素:收集用户信息,包含type属性,可以是文本,复选框,掩码后的文本控件,单选按钮,按钮等
+    <label>标签用于绑定表单元素，当点击label标签内的文本时，浏览器就会自动将焦点（光标）转到或者选择对应的表单元素上，增强用户体验，label标签的for属性应与相关元素的id属性相同
+    
+    select下拉表单元素：select中至少包含一个option，selected = ”selected“即为默认选项
+
+     textarea文本域元素：当用户输入内容较多时，就不能用文本框表单了，textarea用于定义多行文本输入的控件，常见于留言板，评论
+    -->
+
+<body>
+    <form action="demo.php" method="POST" name="name1">
+        <!-- text文本框，可以输入任何文字 -->
+        <label for="text">
+            用户名:</label> <input type="text" name="username" value="请输入姓名" maxlength="6" id="text">
+        <br>
+        <!-- password密码框,用户看不见 -->
+        密码: <input type="password" name="pwd">
+        <br>
+        <!-- radio单选按钮, 实现多选一 -->
+        <!-- name是表单元素名字，这里性别单选必须有相同的名字才能实现多选一 -->
+        <!-- 单选按钮和复选框可以设置checked属性，当页面打开时默认选中 -->
+        <label for="sex">
+            性别: 男 </label><input type="radio" name="sex" id="sex"> 女 <input type="radio" name="sex">
+        <br>
+        <!-- checkbox复选框，实现多选 -->
+        爱好： 吃饭 <input type="checkbox" name="hobby"> 睡觉 <input type="checkbox" name="hobby"> 打豆豆 <input type="checkbox"
+            name="hobby">
+        <br>
+        <!-- 点击submit按钮，将表单域中的表单元素提交到服务器 -->
+        <input type="submit" value="免费注册">
+        <!-- reset重置按钮可以还原表单 -->
+        <input type="reset" value="重新填写">
+        <br>
+        <!-- 普通按钮button，后期结合js搭配使用 -->
+        <input type="button" value="获取验证码">
+        <br>
+        <!-- file上传文件 -->
+        <input type="file" value="选择文件">
+        <br>
+        <br>
+        <br>
+        籍贯：
+        <select name="" id="">
+            <option value="">湖北</option>
+            <option value="">北京</option>
+            <option value="">上海</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        今日反馈：
+        <textarea cols="50" rows="10">
+            拉克斯酱豆腐了就爱上了的腹肌拉伤交流发电
+        </textarea>
+    </form>
+</body>
+
+</html>

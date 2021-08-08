@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol li a {
+            color: pink;
+        }
+
+        .nav>a {
+            color: red;
+        }
+
+        div,
+        p {
+            text-align: center;
+        }
+
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: pink;
+        }
+
+        a:hover {
+            color: greenyellow;
+        }
+
+        a:active {
+            color: grey;
+        }
+
+        input:focus {
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<!-- 
+    复合选择器包括：后代选择器，子选择器，并集选择器，伪类选择器等，基本选择器组合而成
+    后代选择器（重点）：元素一（父代） 元素二（子或孙代），空格隔开
+    子元素选择器（重点）：只能选择最近一级子元素（亲儿子）, 元素一（父级）> 元素二（亲儿子）
+    并集选择器（重要）：元素一，元素二  逗号分隔
+    伪类选择器：添加特殊效果 ，用 ： 表示，有链接伪类，结构伪类等
+                a:link      选择所有未被访问的链接
+                a:visited   选择所有已被访问的链接
+                a:hover     选择鼠标指针位于其上的链接
+                a:active    选择活动链接（鼠标按下未弹起的链接）
+                按照lvha的顺序写样式
+                ：focus用于选取获得焦点的表单元素
+ -->
+
+<body>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li><a href="">5</a></li>
+    </ol>
+    <ul>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <div class="nav">
+        <a href="">亲儿子</a>
+        <p>
+            <a href="">孙子</a>
+        </p>
+    </div>
+    <a href="#">小猪佩奇</a>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    表格是实际开发中常用的标签:
+    作用:不是用来布局页面的,而是用于显示,展示数据
+    语法: <table></table>用来定义表格的标签
+          <tr></tr>用来定义表格中的行,嵌套在table内部
+          <td></td>用于定义表格中的单元格,嵌套在table内部
+          字母td指表格数据(table data),即数据单元格的内容
+
+    表头单元格 <th> 一般位于表格的第一行或第一列,表头单元格内的文本内容加粗居中显示
+    <thead>标签表示表格的头部区域,<tbody>表格的主体区域,更好的分清表格结构
+
+    合并单元格:跨行合并:rowspan="合并单元格的个数"
+              跨列合并:colspan="合并单元格的个数"
+    目标单元格:(写合并代码)
+                跨行:最上面单元格为目标单元格,写合并代码
+                跨列:最左侧单元格为目标单元格
+    合并单元格三部曲:
+    1.先判断是跨行还是跨列合并
+    2.找到目标单元格,写上合并方式 = 合并的单元格数量,如 <td colspan="2"></td>
+    3.删除多于单元格
+
+    
+ -->
+
+<body>
+    <table align="center" border="1" cellpadding="20" cellspacing="0" width="500">
+        <tr>
+            <td>1</td>
+            <td colspan="2">2</td>
+        </tr>
+        <tr>
+            <td rowspan="2">4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    由于父级盒子很多情况下不方便给定高度,但是子盒子浮动又不占位置,最后父级盒子高度为0,就会影响下面的标准流
+    清除浮动的本质是清除浮动元素脱离标准流后造成的影响 ,清除浮动的策略是: 闭合浮动,只让浮动在父盒子内部影响,不影响父盒子外面的,如果父盒子本身有高度就不用清除浮动,清除后父盒子会自动根据浮动的子盒子检测高度
+    clear:属性值;  left:不允许左侧有浮动元素(清除左浮动的影响)
+                  right:不允许右侧有浮动元素(清除右浮动的影响)
+                  both:同时清除左右的影响 ,常用
+                  
+
+    清除浮动的方法:
+    1.格外标签法(隔墙法),W3C推荐做法:
+            在浮动元素结尾添加一个空标签(必须是块级元素) 如 <div style="clear:both"></div> 或者其他 br等
+            优点通俗易懂,书写方便,缺点结构化较差,添加多了空标签
+
+    2.父级添加overflow属性:
+            属性值hidden,auto,scroll,优点代码简洁,缺点无法显示溢出部分
+
+    3.父级添加after伪元素:是额外标签法的升级版,也是给父元素添加: .clearfix:after{...}
+            优点没有增加标签,结构简单,缺点照顾低版本浏览器
+
+    4.父级添加双伪元素:也是给父元素添加 .clearfix:before,.clearfix:after{...}
+
+ -->
+
+<body>
+    <div class="box">
+        <div class="daomao">大毛</div>
+        <div class="ermao">二毛</div>
+        <div class="sanmao">三毛</div>
+    </div>
+    <div class="footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: purple;
+        }
+
+        span {
+            float: left;
+            width: 50px;
+            height: 100px;
+            background-color: red;
+        }
+
+        p {
+            float: right;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .box {
+            width: 1200px;
+            height: 460px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+
+        .left {
+            float: right;
+            width: 230px;
+            height: 460px;
+            background-color: purple;
+
+        }
+
+        .right {
+            float: right;
+            width: 970px;
+            height: 460px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<!-- 
+    加了浮动后的元素会具有很多特性:
+    1.浮动元素会脱离标准流的控制移动到指定位置(脱标),浮动的盒子不再保留原先的位置 //最重要的特性
+            浮动的盒子会压住标准的盒子
+            
+    2.浮动的元素会一行内显示并且元素顶部对齐,如果多个盒子都设置了浮动,会按照属性值一行内显示并且顶部对齐排列,无缝隙,如果父级元素装不下,就另起一行显示
+    3.浮动的元素会具有行内块元素的特性,任何元素都可以浮动,不管是什么,浮动过后都具有行内块元素的特性,无需转换,直接给宽高
+            如果块级盒子没有设置宽度,默认宽度和父级一样宽,但是浮动过后,大小会根据内容来定;
+    
+    为了约束浮动元素位置,一般采取:   先用标准流的父级元素排列上下位置,之后内部子元素采取浮动排列左右位置,符合网页布局第一准则
+    
+    浮动注意点:1.浮动和标准的父盒子搭配,先用标准流的父元素排列上下,之后内部子元素浮动排列左右位置
+              2.一个元素浮动,其余兄弟理论上也要浮动,浮动的盒子只会影响后面的标准流,对前面的标准流不会产生影响
+-->
+
+<body>
+    <div class="box1">浮动的盒子</div>
+    <div class="box2">标准的盒子</div>
+    <span>1</span>
+    <span>2</span>
+    <p>p</p>
+    <div class="box">
+        <div class="left">左侧</div>
+        <div class="right">右侧</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 150px;
+            background-color: pink;
+            border-radius: 75px;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<!-- 
+    CSS3中新增了圆角边框样式 border-radius : length;
+    radius半径(圆的半径)原理:(椭)圆与边框的交集形成圆角效果
+    参数可以是数值也可以是百分比
+    如果是正方形,想要设置一个圆,把数值改为高度或宽度的一半即可,或者直接写50%;
+    可以跟四个值,分别为左上角,右上角,右下角,左下角 顺时针;左上border-top-left-radius
+ -->
+
+<body>
+    <div></div>
+    <div class="circle"></div>
+</body>
+
+</html>

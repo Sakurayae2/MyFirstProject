@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 必须是input 但是同时具有 value这个属性 选择这个元素  [] */
+        /* input[value] {
+            color:pink;
+        } */
+        /* 只选择 type =text 文本框的input 选取出来 */
+        input[type=text] {
+            color: pink;
+        }
+
+        /* 选择首先是div 然后 具有class属性 并且属性值 必须是 icon开头的这些元素 */
+        div[class^=icon] {
+            color: red;
+        }
+
+        section[class$=data] {
+            color: blue;
+        }
+
+        div.icon1 {
+            color: skyblue;
+        }
+
+        /* 1.把所有的偶数 even的孩子选出来 */
+        ul li:nth-child(even) {
+            background-color: #ccc;
+        }
+
+        /* 2.把所有的奇数 odd的孩子选出来 */
+        ul li:nth-child(odd) {
+            background-color: gray;
+        }
+
+        /* 3.nth-child(n) 从0开始 每次加1 往后面计算  这里面必须是n 不能是其他的字母 选择了所有的孩子*/
+        /* ol li:nth-child(n) {
+            background-color: pink;
+        } */
+        /* 4.nth-child(2n)母选择了所有的偶数孩子 等价于 even*/
+        /* ol li:nth-child(2n) {
+            background-color: pink;
+        }
+        ol li:nth-child(2n+1) {
+            background-color: skyblue;
+        } */
+        /* ol li:nth-child(n+3) {
+            background-color: pink;
+        } */
+        ol li:nth-child(-n+3) {
+            background-color: pink;
+        }
+    </style>
+</head>
+<!-- 
+    新增的CSS3特性有兼容性问题,ie9+才支持
+    移动动优于pc端
+    不断改进中
+    现主要学习新增选择器,盒子模型,其他特性
+
+    属性选择器:
+    E[att]          选择具有att属性的E元素
+    E[att="val"]    选择具有att属性等于val的E元素
+    E[att^="val"]   匹配具有att属性以val开头的E元素
+    E[att$="val"]   匹配具有att属性以val结尾的E元素
+    E[att*="val"]   匹配具有att属性含有val的E元素
+
+    结构伪类选择器:根据文档结构来选择元素,常用于根据父元素选择器里的子元素
+    E:first-child   匹配父元素中的第一个子元素E
+    E:last-child    匹配父元素中的最后一个子元素E
+    E:nth-child(n)  匹配父元素中的第n个子元素E ,n可以是数字,关键字,公式 even偶数,odd奇数    
+    E:first-of-type:指定类型E的第一个
+    E:last-of-type: 指定类型E的最后一个
+    E:nth-of-type(n) 指定类型E的第n个  
+
+    伪元素选择器:
+    ::before    在元素内部的前面插入内容
+    ::after     在元素内部的后面插入内容
+    before和aftrer创建一个元素,属于行内元素,但是在文档树中找不到,所以叫伪元素
+    element::before{}
+    before和after必须有content属性
+    伪元素选择器和标签选择器一样,权重1
+
+    CSS3盒子模型:
+    可以通过box-sizing来指定盒模型,content-box,border-box
+    1.box-sizing:content-box盒子大小为width+padding+border(以前默认的)
+    2.box-sizing:border-box盒子大小为width,padding和border不会撑大盒子(前提是padding和border不会超过width)
+
+    CSS图片模糊:
+    滤镜filter:blur(5px); blur模糊处理,值越大越模糊
+
+    计算盒子宽度calc函数:
+    width:calc(100%-30px)  + - * /
+
+    CSS3过渡(重点):
+    颠覆性的特性之一,经常和:hover搭配使用
+    transition:变化的属性 花费时间 运动曲线  何时开始
+ -->
+
+<body>
+    <!-- 1. 利用属性选择器就可以不用借助于类或者id选择器 -->
+    <!-- <input type="text" value="请输入用户名">
+    <input type="text"> -->
+    <!-- 2. 属性选择器还可以选择属性=值的某些元素 重点务必掌握的 -->
+    <input type="text" name="" id="">
+    <input type="password" name="" id="">
+    <!-- 3. 属性选择器可以选择属性值开头的某些元素 -->
+    <div class="icon1">小图标1</div>
+    <div class="icon2">小图标2</div>
+    <div class="icon3">小图标3</div>
+    <div class="icon4">小图标4</div>
+    <div>我是打酱油的</div>
+    <!-- 4. 属性选择器可以选择属性值结尾的某些元素 -->
+    <section class="icon1-data">我是安其拉</section>
+    <section class="icon2-data">我是哥斯拉</section>
+    <section class="icon3-ico">哪我是谁</section>
+
+    <ul>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ul>
+    <ol>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ol>
+</body>
+
+</html>

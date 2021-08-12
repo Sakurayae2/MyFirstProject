@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,
+        textarea {
+            /* 取消表单轮廓 */
+            outline: none;
+        }
+
+        textarea {
+            /* 防止拖拽文本域 */
+            resize: none;
+        }
+    </style>
+</head>
+<!-- 
+    界面样式就是更改一些用户操作样式,以便提高更好的用户体验
+    更改用户的鼠标样式: li {cursor:pointer;} 设置或检索在对象上移动的鼠标指针采取何种系统预定义的光标形状
+                    default:    小白,默认
+                    pointer:    小手
+                    move:       移动
+                    text:       文本
+                    not-allowed 禁止
+
+    表单轮廓:给表单添加 outline:0或者outline:none后就可以去掉默认的蓝色边框
+
+    防止表单域拖拽: resize:none
+
+
+ -->
+
+<body>
+    <input type="text">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <ul>
+        <li style="cursor:default">我是小白样式</li>
+        <li style="cursor: pointer;">我是小手样式</li>
+        <li style="cursor: move;">我是移动样式</li>
+        <li style="cursor: text;">我是文本样式</li>
+        <li style="cursor: not-allowed;">我是禁止样式</li>
+    </ul>
+</body>
+
+</html>

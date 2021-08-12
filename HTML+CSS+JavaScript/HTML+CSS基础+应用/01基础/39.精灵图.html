@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 60px;
+            height: 60px;
+            margin: 100px auto;
+            background: url(../02练习/images/sprites.png) -182px 0 no-repeat;
+        }
+    </style>
+</head>
+<!-- 
+    为什么需要精灵图：
+        一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多，服务器就会频繁的接收和发送请求图片，造成服务器请求压力过大，大大降低页面加载速度；
+        因此，为了有效的减少服务器接受和发送请求的次数，提高页面的加载速度，出现了css精灵技术（CSS Sprites、CSS 雪碧）
+    核心原理：将网页中的一些小背景图整合到一张大的图中，这样只需向服务器发送一次请求了
+
+    使用精灵图：
+    1.精灵技术主要针对背景图，就是把多个小图整合成一张大图，称为精灵图或者雪碧图
+    2.移动背景图片位置，background-position
+    3.移动的距离就是这个目标图片的x和y坐标，注意网页中的坐标往右是x，往下是y
+    4.一般情况下都是往上往左移动，都是负值
+    5.需要精确测量每个小图片的位置和大小
+ 
+    -->
+
+<body>
+    <div class="box1"></div>
+</body>
+
+</html>

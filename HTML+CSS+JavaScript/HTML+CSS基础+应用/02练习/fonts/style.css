@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ngtwha');
+  src:  url('fonts/icomoon.eot?ngtwha#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ngtwha') format('truetype'),
+    url('fonts/icomoon.woff?ngtwha') format('woff'),
+    url('fonts/icomoon.svg?ngtwha#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-nintendo3ds:before {
+  content: "\e900";
+  color: #d12228;
+}
+.icon-nintendoswitch:before {
+  content: "\e901";
+  color: #e60012;
+}
+.icon-volkswagen:before {
+  content: "\e902";
+  color: #151f5d;
+}
+.icon-windows:before {
+  content: "\e903";
+  color: #0078d6;
+}

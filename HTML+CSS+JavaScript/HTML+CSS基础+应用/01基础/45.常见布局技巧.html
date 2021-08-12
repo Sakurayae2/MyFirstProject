@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            text-align: center;
+        }
+
+        .box1 a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 36px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .box1 .prev,
+        .box1 .next {
+            width: 85px;
+        }
+
+        .box1 .current,
+        .box1 .elp {
+            background-color: #fff;
+            border: none;
+        }
+
+        .box1 input {
+            height: 36px;
+            width: 45px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .box1 button {
+            width: 60px;
+            height: 36px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+
+        }
+
+        .box {
+            width: 0;
+            height: 0;
+            border-top: 100px solid transparent;
+            border-right: 50px solid skyblue;
+            border-bottom: 0 solid blue;
+            border-left: 0 solid green;
+        }
+    </style>
+    </style>
+</head>
+<!-- 
+    1.margin负值的运用 : 让每个盒子margin往左移动-1px,真好压住相邻盒子边框
+                        鼠标经过某个盒子时,提高当前盒子的层级即可(如果没有定位,则加相对定位,有定位就加z-index)
+    
+    2.文字围绕浮动元素 : 巧妙运用浮动元素不会压住文字的特性
+ 
+    3.行内块的巧妙运用 :
+
+    4.css三角强化  :    左边和下边的边框宽度设为0,把上边框宽度调大
+ -->
+
+<body>
+    <!-- <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="box">
+        <div class="pic">
+            <img src="../02练习/images/img.jpg" alt="">
+        </div>
+        <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+    </div>
+    -->
+
+    <div class="box1">
+        <a href="#" class="prev">&lt;&lt;上一页</a>
+        <a href="#" class="current">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#" class="elp">...</a>
+        <a href="#" class="next">&gt;&gt;下一页</a>
+        到第
+        <input type="text">
+        页
+        <button>确定</button>
+    </div>
+    <div class="box"></div>
+</body>
+
+</html>

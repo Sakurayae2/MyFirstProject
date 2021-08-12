@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grandpa {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            background-color: blue;
+        }
+
+        .father {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: purple;
+        }
+
+        .son {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<!-- 
+    绝对定位是元素在移动位置时，是相对于他祖先元素来说的（拼爹型）
+        position：absolute；
+    绝对定位的特点：
+    1.如果没有祖先元素或祖先元素没有定位，以浏览器为准定位
+    2.如果祖先元素有定位（相对，绝对，固定），则以最近一级的有定位的祖先元素为参考点移动位置
+    3.脱标，不再占有原来的位置
+
+    子绝父相：子级是绝对定位，父级要用相对定位
+    1.子级绝对定位，不会占有位置，可以放到父元素的任何位置，不会影响其他兄弟盒子
+    2.父盒子必须加定位限制子盒子在父盒子内显示
+    3.父盒子布局时，需要占有位置，因此只能是相对定位
+    当然不是绝对的有些情况，子绝父绝也会遇到
+ -->
+
+<body>
+    <div class="grandpa">
+        <div class="father">
+            <div class="son"></div>
+        </div>
+    </div>
+</body>
+
+</html>

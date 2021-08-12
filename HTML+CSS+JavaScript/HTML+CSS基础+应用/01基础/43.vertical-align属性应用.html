@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            vertical-align: top;
+            /* vertical-align: middle; */
+        }
+    </style>
+</head>
+<!-- 
+    CSS中的vertical-align使用场景:经常用于设置图片或者表单(行内块元素)和文字垂直对齐
+    用于设置一个元素的垂直对齐方式,只针对行内元素和行内块元素   
+    vertical-align:baseline|top|middle|bottom
+                   baseline:    默认,元素放置在父元素的基线上
+                   top:         把元素的顶端和行中最高元素的顶端对齐
+                   middle:      吧此元素放置在父元素中部
+                   bottom:      把元素的顶端和最低的元素的顶端对齐
+                                          
+                   
+    图片底部有空白缝隙,原因是行内块元素会和文字的基线对齐
+    解决方案:
+    1.给图片添加vertical-align:middle等(提倡使用)
+    2.把图片转换为块级元素
+ -->
+
+<body>
+    <img src="../02练习/images/img.jpg" alt=""> 蓝牙耳机
+</body>
+
+</html>

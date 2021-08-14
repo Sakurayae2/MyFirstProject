@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声明式渲染</title>
+    <script src="../vue.js"></script>
+</head>
+<!--
+    Vue.js的核心是一个允许采用简洁的模板语法来声明式的将数据渲染进DOM的系统
+-->
+
+<body>
+    <div id="counter">
+        Counter:{{counter}}
+        <hr>
+
+        <!-- 除了文本插值，还可以像这样绑定元素的attribute-->
+        <span v-bind:title="message">
+            鼠标悬停几秒后查看此处动态绑定的提示信息
+        </span>
+        <!-- 
+            这里遇到了移一点新东西，v-bind attribute 被称为指令，指令带有 v- ，以表示它们是Vue提供的
+            特殊attribute。它们会在渲染的DOM上应用特殊的响应式行为。在这里，该指令的意思是：将这个元素
+            节点的 title attribute和当前活跃实例的message property 保持一致
+         -->
+    </div>
+    <script>
+        const Counter = new Vue({
+            el: '#counter',
+            data() {
+                return {
+                    counter: 0,
+                    message: 'You loaded ' + new Date().toLocaleString()
+                }
+            },
+
+            /*
+            数据和DOM建立了联系，所有东西都是响应式的，
+            其中counter property每秒递增，你将看到渲染的DOM是如何变化的 
+             */
+            mounted() {
+                setInterval(() => {
+                    this.counter++
+                }, 1000)
+
+            }
+        })
+    </script>
+</body>
+
+</html>

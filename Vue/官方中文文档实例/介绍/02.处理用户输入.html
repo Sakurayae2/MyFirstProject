@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>处理用户输入</title>
+    <script src="../vue.js"></script>
+</head>
+<!-- 
+
+ -->
+
+<body>
+    <!-- 为了让用户和应用进行交互，可以用 v-on 指令添加一个事件监听器，通过它调用在实例中定义的方法：-->
+    <div id="event-handling">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">反转message</button>
+    </div>
+    <script>
+        const EventHandling = new Vue({
+            el: '#event-handling',
+            data() {
+                return {
+                    message: 'Hello Vue.js!'
+                }
+            },
+            methods: {
+                reverseMessage() {
+                    this.message = this.message.split('').reverse().join('')
+                    /* 
+                        1、split('') 把一个字符串分割成字符串数组
+                        把数据拆分为一个数组,括号里的 '' 空字符串是指把一个字符串拆分为每个字符
+
+                        2、reverse() 颠倒数组中元素的顺序
+                        只作用于数组，跟在split('')后才能起作用，在一个字符串后面不起作用，如message.reverse()
+
+                        3、join('') 把数组中的所有元素放入一个字符串
+                        所以，message.split('').reverse().join('')  意思是把字符串翻转重组成字符串： Hello→olleH
+                    */
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

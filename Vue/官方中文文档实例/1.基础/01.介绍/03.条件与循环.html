@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件与循环</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- v-if 指令可以控制切换一个元素是否显示: -->
+    <div id="conditional-rendering">
+        <span v-if="seen">
+            你现在看到我了
+        </span>
+    </div>
+    <hr>
+    <!-- v-for 指令可以绑定数组的数据来渲染一个项目列表: -->
+    <div id="list-rendering">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+    <script>
+        const ConditionalRendering = new Vue({
+            el: '#conditional-rendering',
+            data() {
+                return {
+                    seen: true
+                    // seen:false
+                }
+            }
+        });
+        /* 
+        这个例子演示了不仅可以把数据绑定到DOM文本或attribute,还可以绑定到DOM的结构.此外,
+        Vue还提供了一个强大的过渡效果系统,可以在Vue插入/更新/移除元素时自动应用过渡效果
+        */
+        const ListRendering = new Vue({
+            el: '#list-rendering',
+            data() {
+                return {
+                    todos: [{
+                            text: 'Learn Javascript'
+                        },
+                        {
+                            text: 'Learn Vue'
+                        },
+                        {
+                            text: 'Build something awosome'
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

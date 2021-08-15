@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件化应用构建</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<!-- 组件系统是Vue的另一个重要概念,因为它是一种抽象,允许使用小型,独立和通常可复用的组件构建大型应用.
+     仔细想想,几乎任何类型的应用界面都可以抽象为一个组件树: 
+-->
+
+<body>
+    <!-- 
+        在Vue中,组件本质上是一个具有预定义选项的实例. 在Vue中注册组件很简单: 如对App对象所作的那样
+        创建一个组件对象,并将其定义在父级组件的 components 选项中:
+     -->
+    <div id="todo-list-app">
+        <ol>
+            <!--
+            现在我们为每个 todo-item 提供 todo 对象
+            todo 对象是变量，即其内容可以是动态的。
+            我们也需要为每个组件提供一个“key”，稍后再
+            作详细解释。
+          -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ol>
+    </div>
+    <script>
+        const TodoList = {
+            data() {
+                return {
+                    groceryList: [{
+                            id: 0,
+                            text: 'Vegetables'
+                        },
+                        {
+                            id: 1,
+                            text: 'Cheese'
+                        },
+                        {
+                            id: 2,
+                            text: 'Whatever else humans are supposed to eat'
+                        }
+                    ]
+                }
+            }
+        }
+
+        const app = Vue.createApp(TodoList)
+
+        app.component('todo-item', {
+            props: ['todo'],
+            template: `<li>{{ todo.text }}</li>`
+        })
+
+        app.mount('#todo-list-app')
+    </script>
+    <!-- 
+        尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 <todo-item> 组件，提供更为复杂的模板和逻辑，而不会影响到父应用。
+
+        在一个大型应用中，有必要将整个应用程序划分为多个组件，以使开发更易管理。在后续教程中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
+
+        <div id="app">
+        <app-nav></app-nav>
+        <app-view>
+            <app-sidebar></app-sidebar>
+            <app-content></app-content>
+        </app-view>
+        </div>
+     -->
+</body>
+
+</html>

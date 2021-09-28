@@ -6,27 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        function t(time) {
-            var a = +new Date();
-            var b = +new Date(time);
-            var c = (b - a) / 1000;
-            var d = parseInt(c / 60 / 60 / 24);
-            d = d < 10 ? '0' + d : d;
-            var h = parseInt(c / 60 / 60 % 60);
-            h = h < 10 ? '0' + h : h;
-            var m = parseInt(c / 60 % 60);
-            m = m < 10 ? '0' + m : m;
-            var s = parseInt(c % 60);
-            s = s < 10 ? '0' + s : s;
-            return d + '天' + h + '时' + m + '分' + s + '秒';
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
         }
-        console.log(t('2021-8-29 18:00:00'));
-    </script>
+
+        .op {
+            width: 100%;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        .op>div {
+            float: left;
+        }
+
+        .left {
+            width: 40%;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .right {
+            width: 60%;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div class="op">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
 </body>
 
 </html>
